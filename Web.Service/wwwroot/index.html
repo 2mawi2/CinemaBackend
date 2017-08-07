@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="content-type" content="application/force-download">
+    <meta name=" viewport" content="width=device-width, initial-scale=1">
+    <title>Cinema Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="Scripts/indexController.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet">
+</head>
+<body ng-app="CinemaApp">
+<div ng-controller="indexController" ng-cloak="" ng-init="updateAll()">
+    <div class="masthead">
+        <div class="container">
+            <p style="text-align: right;">
+                <h7>
+                    <b>Cinema Management</b>
+                </h7>
+            </p><br/>
+        </div>
+    </div>
+    <div class="container">
+        <p style="text-align: center; font-size: 18px">
+            <b>All Reservations:</b>
+        </p>
+        <table st-table="data.reservations" class="table table-striped">
+            <thead>
+            <tr>
+                <th>ReservationID</th>
+                <th>ShowItemId</th>
+                <th>ReservationDateTime</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="reservation in data.reservations" ng-style="areaStyle={'background':'20px'}">
+                <td>{{reservation.Id._id}}</td>
+                <td>{{reservation.ShowItemId._id}}</td>
+                <td>{{reservation.ReservationDateTime | date}}</td>
+                <td>
+                    <button ng-click="deleteReservation(reservation.Id._id)">
+                        X
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <form>
+            <input type="text" name="input" ng-model="data.showIdEntry" placeholder="Enter a ShowId">
+            <button ng-click="createReservation()">
+                Create Reservation
+            </button>
+        </form>
+        <br/>
+        <p style="text-align: center; font-size: 18px">
+            <b>All Shows:</b>
+        </p>
+        <br/>
+        <table st-table="data.shows" class="table table-striped">
+            <thead>
+            <tr>
+                <th>ShowID</th>
+                <th>Movie</th>
+                <th>ShowDateTime</th>
+                <th>MaxReservations</th>
+                <th>Reservation Count</th>
+                <th>Add Reservation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="show in data.shows" ng-style="areaStyle={'background':'20px'}">
+                <td>{{show.Id._id}}</td>
+                <td>{{show.Movie}}</td>
+                <td>{{show.ShowDateTime | date}}</td>
+                <td>{{show.MaxReservations}}</td>
+                <td>{{countReservations(show.Reservations)}}</td>
+                <td>
+                    <button ng-click="data.showIdEntry = show.Id._id; createReservation()">
+                        Add Reservation
+                    </button>
+                </td>
+                <td>
+                    <button ng-click="deleteShow(show.Id._id)">
+                        X
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <form>
+            <input type="text" name="input" ng-model="data.showInput.movie" placeholder="Movie">
+            <input type="text" name="input" ng-model="data.showInput.maxReservations" placeholder="maxReservations">
+            <input type="text" name="input" ng-model="data.showInput.year" placeholder="year">
+            <input type="text" name="input" ng-model="data.showInput.month" placeholder="month">
+            <input type="text" name="input" ng-model="data.showInput.day" placeholder="day">
+            <button ng-click="createShow()">
+                Create Show
+            </button>
+        </form>
+        <button ng-click="makeShow()">
+            Generate Test Show
+        </button>
+    </div>
+</div>
+
+</body>
+</html>
