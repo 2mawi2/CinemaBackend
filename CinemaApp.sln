@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "CinemaApplication", "WebReferenceApplication\CinemaApplication.sfproj", "{0EE37B65-FCCB-44AE-B4F7-AED85FDEB072}"
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "CinemaApplication", "CinemaApplication\CinemaApplication.sfproj", "{0EE37B65-FCCB-44AE-B4F7-AED85FDEB072}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9EC0063F-489E-43FE-94B5-BF5F89977CD3} = {9EC0063F-489E-43FE-94B5-BF5F89977CD3}
 	EndProjectSection
